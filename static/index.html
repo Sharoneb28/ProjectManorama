@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ticker Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Ticker Desk</h1>
+  <span class="badge">Runs offline: no API key</span>
+</header>
+
+<div class="layout">
+  <aside class="intake">
+    <h2>Announcements</h2>
+    <p class="hint">Paste one or many. Put <code>---</code> on its own line between announcements.</p>
+    <textarea id="paste" rows="12" placeholder="Paste a press release here…"></textarea>
+    <div class="row">
+      <label class="file">Load .txt or .json<input type="file" id="file" accept=".txt,.json" multiple></label>
+      <button id="sample" class="ghost" type="button">Use samples</button>
+    </div>
+    <button id="generate" class="primary" type="button">Generate tickers</button>
+    <p id="status" class="status" role="status"></p>
+  </aside>
+
+  <main class="review">
+    <div class="toolbar">
+      <h2>Review <span id="counts" class="muted"></span></h2>
+      <div class="row">
+        <button id="approveAll" class="ghost" type="button">Approve all valid</button>
+        <button id="copy" class="ghost" type="button">Copy JSON</button>
+        <button id="export" class="primary" type="button">Export approved</button>
+      </div>
+    </div>
+    <ol id="list" class="list"></ol>
+    <p id="empty" class="empty-state">No tickers yet. Paste announcements on the left and generate.</p>
+  </main>
+</div>
+
+<footer class="bar" aria-label="Ticker preview">
+  <div class="bar-label"><span class="live">LIVE</span><span id="tickerMode" class="bar-mode"></span></div>
+  <div id="viewport" class="viewport"><div id="track" class="track"></div></div>
+  <label class="speed">Speed
+    <select id="speed"><option value="60">Slow</option><option value="100" selected>Normal</option><option value="160">Fast</option></select>
+  </label>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
